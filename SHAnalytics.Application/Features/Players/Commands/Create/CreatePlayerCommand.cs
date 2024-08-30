@@ -26,7 +26,8 @@ namespace SHAnalytics.Application.Features.Players.Commands.Create
                 Player player = new Player
                 {
                     Name = generator.Generate(),
-                    CreateTime = DateTime.UtcNow
+                    CreateTime = DateTime.UtcNow,
+                    TotalTime = 0
                 };
 
                 await _repository.AddAsync(player);
