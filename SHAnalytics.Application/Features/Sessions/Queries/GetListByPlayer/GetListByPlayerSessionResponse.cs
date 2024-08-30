@@ -1,6 +1,6 @@
 namespace SHAnalytics.Application.Features.Sessions.Queries.GetList
 {
-    public class GetByIdSessionResponse
+    public class GetListByPlayerSessionResponse
     {
         public int Id { get; set; }
         public int PlayerId { get; set; }

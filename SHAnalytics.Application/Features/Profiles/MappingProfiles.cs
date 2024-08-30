@@ -20,6 +20,7 @@ namespace SHAnalytics.Application.Features.Profiles
             CreateMap<Session, CreateSessionCommand>().ReverseMap();
             CreateMap<Session, GetListSessionResponse>().ReverseMap();
             CreateMap<Session, GetByIdSessionResponse>().ReverseMap();
+            CreateMap<Session, GetListByPlayerSessionResponse>().ReverseMap();
 
         }
     }
