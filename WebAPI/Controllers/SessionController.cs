@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using SHAnalytics.Application.Features.Sessions.Commands.Create;
 using SHAnalytics.Application.Features.Sessions.Queries.GetById;
 using SHAnalytics.Application.Features.Sessions.Queries.GetList;
-using SHAnalytics.Application.Features.Sessions.Queries.GetListByPlayer;
 
 namespace WebAPI.Controllers
 {
@@ -34,12 +33,12 @@ namespace WebAPI.Controllers
             return Ok(response);
         }
 
-        [HttpGet("/api/players/{playerId}/sessions")]
-        public async Task<IActionResult> GetListByPlayerId(int playerId)
-        {
-            var response = await Mediator.Send(new GetListByPlayerSessionQuery(playerId));
-            return Ok(response);
-        }
+        //[HttpGet("/api/players/{playerId}/sessions")]
+        //public async Task<IActionResult> GetListByPlayerId(int playerId)
+        //{
+        //    var response = await Mediator.Send(new GetListByPlayerSessionQuery(playerId));
+        //    return Ok(response);
+        //}
 
     }
 }

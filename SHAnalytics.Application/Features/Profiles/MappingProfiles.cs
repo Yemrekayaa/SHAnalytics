@@ -1,4 +1,6 @@
 using AutoMapper;
+using SHAnalytics.Application.Features.InGames.Commands.Create;
+using SHAnalytics.Application.Features.InGames.Queries.GetList;
 using SHAnalytics.Application.Features.Players.Commands.Create;
 using SHAnalytics.Application.Features.Players.Queries.GetList;
 using SHAnalytics.Application.Features.Sessions.Commands.Create;
@@ -20,8 +22,12 @@ namespace SHAnalytics.Application.Features.Profiles
             CreateMap<Session, CreateSessionCommand>().ReverseMap();
             CreateMap<Session, GetListSessionResponse>().ReverseMap();
             CreateMap<Session, GetByIdSessionResponse>().ReverseMap();
-            CreateMap<Session, GetListByPlayerSessionResponse>().ReverseMap();
+            //CreateMap<Session, GetListByPlayerSessionResponse>().ReverseMap();
 
+            CreateMap<InGame, CreateInGameResponse>().ReverseMap();
+            CreateMap<InGame, CreateInGameCommand>().ReverseMap();
+            CreateMap<InGame, GetListInGameResponse>().ReverseMap();
+            CreateMap<InGame, GetByIdInGameResponse>().ReverseMap();
         }
     }
 }

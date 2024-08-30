@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using SHAnalytics.Core.Entities;
 using SHAnalytics.Core.Interfaces;
 
@@ -14,7 +13,8 @@ namespace SHAnalytics.Infrastructure.Data
         }
         public async Task<IEnumerable<Session>> GetListByPlayerIdAsync(int playerId)
         {
-            return await _context.Sessions.Where(s => s.PlayerId == playerId).ToListAsync();
+            //return await _context.Sessions.Where(s => s.PlayerId == playerId).ToListAsync();
+            return null;
         }
     }
 }

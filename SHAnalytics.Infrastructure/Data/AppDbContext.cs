@@ -12,6 +12,8 @@ namespace SHAnalytics.Infrastructure.Data
 
         public DbSet<Player> Players { get; set; }
         public DbSet<Session> Sessions { get; set; }
+        public DbSet<InGame> InGames { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
