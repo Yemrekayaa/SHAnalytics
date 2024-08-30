@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SHAnalytics.Application.Features.InGames.Commands.Create;
+using SHAnalytics.Application.Features.InGames.Commands.Update;
 using SHAnalytics.Application.Features.InGames.Queries.GetById;
 using SHAnalytics.Application.Features.InGames.Queries.GetList;
 
@@ -33,12 +34,12 @@ namespace WebAPI.Controllers
             return Ok(response);
         }
 
-        //[HttpGet("/api/players/{playerId}/InGames")]
-        //public async Task<IActionResult> GetListByPlayerId(int playerId)
-        //{
-        //    var response = await Mediator.Send(new GetListByPlayerInGameQuery(playerId));
-        //    return Ok(response);
-        //}
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateInGameByIdCommand command)
+        {
+            var response = await Mediator.Send(command);
+            return Ok();
+        }
 
     }
 }

@@ -24,7 +24,7 @@ namespace SHAnalytics.Application.Features.Profiles
             CreateMap<Session, GetByIdSessionResponse>().ReverseMap();
             //CreateMap<Session, GetListByPlayerSessionResponse>().ReverseMap();
 
-            CreateMap<InGame, CreateInGameResponse>().ReverseMap();
+            CreateMap<InGame, UpdateInGameByIdResponse>().ReverseMap();
             CreateMap<InGame, CreateInGameCommand>().ReverseMap();
             CreateMap<InGame, GetListInGameResponse>().ReverseMap();
             CreateMap<InGame, GetByIdInGameResponse>().ReverseMap();
