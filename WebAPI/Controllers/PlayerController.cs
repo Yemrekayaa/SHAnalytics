@@ -33,7 +33,7 @@ namespace WebAPI.Controllers
             return Ok(response);
         }
 
-        [HttpGet("/test/{str}")]
+        [HttpGet("test/{str}")]
         public async Task<IActionResult> GetById(string str)
         {
             return Ok(str);
