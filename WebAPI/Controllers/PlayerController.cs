@@ -6,7 +6,7 @@ using SHAnalytics.Application.Features.Players.Queries.GetList;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/players")]
     [ApiController]
     public class PlayerController : ControllerBase
     {
