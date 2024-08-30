@@ -1,22 +1,22 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SHAnalytics.Application.Features.Players.Queries.GetById;
 using SHAnalytics.Application.Features.Sessions.Commands.Create;
+using SHAnalytics.Application.Features.Sessions.Queries.GetById;
 using SHAnalytics.Application.Features.Sessions.Queries.GetList;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/players")]
+    [Route("api/Sessions")]
     [ApiController]
-    public class PlayerController : ControllerBase
+    public class SessionController : ControllerBase
     {
         private IMediator? _mediator;
         protected IMediator? Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
         [HttpPost]
-        public async Task<IActionResult> Add()
+        public async Task<IActionResult> Add([FromBody] CreateSessionCommand command)
         {
-            CreateSessionResponse response = await Mediator.Send(new CreateSessionCommand());
+            CreateSessionResponse response = await Mediator.Send(command);
             return Ok(response);
         }
         [HttpGet]
@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            GetByIdSessionResponse response = await Mediator.Send(new GetByIdPlayerQuery(id));
+            GetByIdSessionResponse response = await Mediator.Send(new GetByIdSessionQuery(id));
             return Ok(response);
         }
 

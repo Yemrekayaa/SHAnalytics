@@ -1,9 +1,11 @@
 using AutoMapper;
 using SHAnalytics.Application.Features.Players.Commands.Create;
 using SHAnalytics.Application.Features.Players.Queries.GetList;
+using SHAnalytics.Application.Features.Sessions.Commands.Create;
+using SHAnalytics.Application.Features.Sessions.Queries.GetList;
 using SHAnalytics.Core.Entities;
 
-namespace SHAnalytics.Application.Features.Players.Profiles
+namespace SHAnalytics.Application.Features.Profiles
 {
     public class MappingProfiles : Profile
     {
@@ -13,6 +15,12 @@ namespace SHAnalytics.Application.Features.Players.Profiles
             CreateMap<Player, CreatePlayerCommand>().ReverseMap();
             CreateMap<Player, GetListPlayerResponse>().ReverseMap();
             CreateMap<Player, GetByIdPlayerResponse>().ReverseMap();
+
+            CreateMap<Session, CreateSessionResponse>().ReverseMap();
+            CreateMap<Session, CreateSessionCommand>().ReverseMap();
+            CreateMap<Session, GetListSessionResponse>().ReverseMap();
+            CreateMap<Session, GetByIdSessionResponse>().ReverseMap();
+
         }
     }
 }

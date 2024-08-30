@@ -9,6 +9,8 @@ namespace SHAnalytics.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<Player> builder)
         {
             builder.Property(b => b.TotalTime).HasDefaultValue(0);
+            builder.Property(b => b.TotalPlayed).HasDefaultValue(0);
+            builder.HasMany(b => b.Sessions).WithOne(s => s.Player).HasForeignKey(s => s.PlayerId);
         }
     }
 }
