@@ -4,6 +4,7 @@ using SHAnalytics.Application.Features.InGames.Commands.Create;
 using SHAnalytics.Application.Features.InGames.Commands.Update;
 using SHAnalytics.Application.Features.InGames.Queries.GetById;
 using SHAnalytics.Application.Features.InGames.Queries.GetList;
+using SHAnalytics.Application.Features.InGames.Queries.GetListByPlayer;
 
 namespace WebAPI.Controllers
 {
@@ -39,6 +40,13 @@ namespace WebAPI.Controllers
         {
             var response = await Mediator.Send(command);
             return Ok();
+        }
+
+        [HttpGet("/api/players/{playerId}/InGames")]
+        public async Task<IActionResult> GetListByPlayerId(int playerId)
+        {
+            var response = await Mediator.Send(new GetListByPlayerInGameQuery(playerId));
+            return Ok(response);
         }
 
     }

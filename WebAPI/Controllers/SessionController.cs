@@ -4,6 +4,8 @@ using SHAnalytics.Application.Features.Sessions.Commands.Create;
 using SHAnalytics.Application.Features.Sessions.Commands.Update;
 using SHAnalytics.Application.Features.Sessions.Queries.GetById;
 using SHAnalytics.Application.Features.Sessions.Queries.GetList;
+using SHAnalytics.Application.Features.Sessions.Queries.GetListByInGame;
+using SHAnalytics.Application.Features.Sessions.Queries.GetListByPlayer;
 
 namespace WebAPI.Controllers
 {
@@ -41,12 +43,18 @@ namespace WebAPI.Controllers
             return Ok();
         }
 
-        //[HttpGet("/api/players/{playerId}/sessions")]
-        //public async Task<IActionResult> GetListByPlayerId(int playerId)
-        //{
-        //    var response = await Mediator.Send(new GetListByPlayerSessionQuery(playerId));
-        //    return Ok(response);
-        //}
+        [HttpGet("/api/players/{playerId}/sessions")]
+        public async Task<IActionResult> GetListByPlayerId(int playerId)
+        {
+            var response = await Mediator.Send(new GetListByPlayerSessionQuery(playerId));
+            return Ok(response);
+        }
 
+        [HttpGet("/api/InGames/{inGameId}/sessions")]
+        public async Task<IActionResult> GetListByInGameId(int inGameId)
+        {
+            var response = await Mediator.Send(new GetListByInGameSessionQuery(inGameId));
+            return Ok(response);
+        }
     }
 }

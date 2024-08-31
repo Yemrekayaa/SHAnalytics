@@ -25,7 +25,9 @@ namespace SHAnalytics.Application.Features.Profiles
             CreateMap<Session, GetByIdSessionResponse>().ReverseMap();
             CreateMap<Session, UpdateInGameByIdCommand>().ReverseMap();
             CreateMap<Session, UpdateInGameByIdResponse>().ReverseMap();
-            //CreateMap<Session, GetListByPlayerSessionResponse>().ReverseMap();
+            CreateMap<Session, GetListByPlayerSessionResponse>()
+            .ForMember(dest => dest.PlayerId, opt => opt.MapFrom(src => src.InGame.Player.Id)).ReverseMap();
+            CreateMap<Session, GetListByInGameSessionResponse>().ReverseMap();
 
             CreateMap<InGame, CreateInGameResponse>().ReverseMap();
             CreateMap<InGame, CreateInGameCommand>().ReverseMap();
@@ -33,6 +35,7 @@ namespace SHAnalytics.Application.Features.Profiles
             CreateMap<InGame, GetByIdInGameResponse>().ReverseMap();
             CreateMap<InGame, UpdateInGameByIdCommand>().ReverseMap();
             CreateMap<InGame, UpdateInGameByIdResponse>().ReverseMap();
+            CreateMap<InGame, GetListByPlayerInGameResponse>().ReverseMap();
         }
     }
 }
