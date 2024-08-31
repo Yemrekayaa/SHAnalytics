@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SHAnalytics.Application.Features.Sessions.Commands.Create;
+using SHAnalytics.Application.Features.Sessions.Commands.Update;
 using SHAnalytics.Application.Features.Sessions.Queries.GetById;
 using SHAnalytics.Application.Features.Sessions.Queries.GetList;
 
@@ -31,6 +32,13 @@ namespace WebAPI.Controllers
         {
             GetByIdSessionResponse response = await Mediator.Send(new GetByIdSessionQuery(id));
             return Ok(response);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateSessionByIdCommand command)
+        {
+            var response = await Mediator.Send(command);
+            return Ok();
         }
 
         //[HttpGet("/api/players/{playerId}/sessions")]
