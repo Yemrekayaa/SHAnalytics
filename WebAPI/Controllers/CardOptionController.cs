@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SHAnalytics.Application.Features.CardOptions.Commands.Create;
+using SHAnalytics.Application.Features.CardOptions.Commands.Update;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetById;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetList;
 
@@ -27,6 +28,13 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var response = await Mediator.Send(new GetByIdCardOptionQuery(id));
+            return Ok(response);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateCardOptionByIdCommand command)
+        {
+            var response = await Mediator.Send(command);
             return Ok(response);
         }
     }
