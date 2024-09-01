@@ -10,5 +10,6 @@ namespace SHAnalytics.Core.Entities
         public string EndCause { get; set; }
         public string DeathCause { get; set; }
         public InGame InGame { get; set; }
+        public ICollection<BattleArea> BattleAreas { get; set; }
     }
 }

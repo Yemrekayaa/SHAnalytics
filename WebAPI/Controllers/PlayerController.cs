@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SHAnalytics.Application.Features.Players.Commands.Create;
 using SHAnalytics.Application.Features.Players.Queries.GetById;
 using SHAnalytics.Application.Features.Players.Queries.GetList;
@@ -8,10 +7,8 @@ namespace WebAPI.Controllers
 {
     [Route("api/Players")]
     [ApiController]
-    public class PlayerController : ControllerBase
+    public class PlayerController : BaseController
     {
-        private IMediator? _mediator;
-        protected IMediator? Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
         [HttpPost]
         public async Task<IActionResult> Add()

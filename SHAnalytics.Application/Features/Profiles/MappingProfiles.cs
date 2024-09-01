@@ -1,4 +1,6 @@
 using AutoMapper;
+using SHAnalytics.Application.Features.BattleAreas.Commands.Create;
+using SHAnalytics.Application.Features.BattleAreas.Queries.GetList;
 using SHAnalytics.Application.Features.InGames.Commands.Create;
 using SHAnalytics.Application.Features.InGames.Commands.Update;
 using SHAnalytics.Application.Features.InGames.Queries.GetList;
@@ -36,6 +38,11 @@ namespace SHAnalytics.Application.Features.Profiles
             CreateMap<InGame, UpdateInGameByIdCommand>().ReverseMap();
             CreateMap<InGame, UpdateInGameByIdResponse>().ReverseMap();
             CreateMap<InGame, GetListByPlayerInGameResponse>().ReverseMap();
+
+            CreateMap<BattleArea, CreateBattleAreaCommand>().ReverseMap();
+            CreateMap<BattleArea, CreateBattleAreaResponse>().ReverseMap();
+            CreateMap<BattleArea, GetListBattleAreaResponse>().ReverseMap();
+            CreateMap<BattleArea, GetByIdBattleAreaResponse>().ReverseMap();
         }
     }
 }

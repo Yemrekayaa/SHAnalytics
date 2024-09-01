@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SHAnalytics.Application.Features.Sessions.Commands.Create;
 using SHAnalytics.Application.Features.Sessions.Commands.Update;
 using SHAnalytics.Application.Features.Sessions.Queries.GetById;
@@ -11,10 +10,8 @@ namespace WebAPI.Controllers
 {
     [Route("api/Sessions")]
     [ApiController]
-    public class SessionController : ControllerBase
+    public class SessionController : BaseController
     {
-        private IMediator? _mediator;
-        protected IMediator? Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateSessionCommand command)

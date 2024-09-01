@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SHAnalytics.Application.Features.InGames.Commands.Create;
 using SHAnalytics.Application.Features.InGames.Commands.Update;
 using SHAnalytics.Application.Features.InGames.Queries.GetById;
@@ -10,10 +9,8 @@ namespace WebAPI.Controllers
 {
     [Route("api/InGames")]
     [ApiController]
-    public class InGameController : ControllerBase
+    public class InGameController : BaseController
     {
-        private IMediator? _mediator;
-        protected IMediator? Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateInGameCommand command)
