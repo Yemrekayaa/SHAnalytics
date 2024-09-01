@@ -189,3 +189,29 @@ VALUES ('20240901040146_Add_Battle_Table', '8.0.8');
 
 COMMIT;
 
+BEGIN TRANSACTION;
+
+CREATE TABLE "CardOption" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_CardOption" PRIMARY KEY AUTOINCREMENT,
+    "BattleId" INTEGER NOT NULL,
+    "IsSelected" INTEGER NOT NULL,
+    "IsPerma" INTEGER NOT NULL,
+    CONSTRAINT "FK_CardOption_Battles_BattleId" FOREIGN KEY ("BattleId") REFERENCES "Battles" ("Id") ON DELETE CASCADE
+);
+
+CREATE INDEX "IX_CardOption_BattleId" ON "CardOption" ("BattleId");
+
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20240901144347_Add_CardOption_Table', '8.0.8');
+
+COMMIT;
+
+BEGIN TRANSACTION;
+
+ALTER TABLE "CardOption" ADD "Name" TEXT NOT NULL DEFAULT '';
+
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20240901145044_Add_Name_CardOption', '8.0.8');
+
+COMMIT;
+

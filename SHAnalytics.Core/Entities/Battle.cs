@@ -6,6 +6,6 @@ namespace SHAnalytics.Core.Entities
         public int BattleAreaId { get; set; }
         public int BattleNumber { get; set; }
         public BattleArea BattleArea { get; set; }
-
+        public ICollection<CardOption> CardOptions { get; set; }
     }
 }
