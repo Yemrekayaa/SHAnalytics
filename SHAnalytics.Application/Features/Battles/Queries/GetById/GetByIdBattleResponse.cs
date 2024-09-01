@@ -1,11 +1,10 @@
-namespace SHAnalytics.Core.Entities
+namespace SHAnalytics.Application.Features.Battles.Queries.GetList
 {
-    public class Battle
+    public class GetByIdBattleResponse
     {
         public int Id { get; set; }
         public int BattleAreaId { get; set; }
         public int BattleNumber { get; set; }
-        public BattleArea BattleArea { get; set; }
 
     }
 }

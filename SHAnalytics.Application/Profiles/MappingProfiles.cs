@@ -1,6 +1,8 @@
 using AutoMapper;
 using SHAnalytics.Application.Features.BattleAreas.Commands.Create;
 using SHAnalytics.Application.Features.BattleAreas.Queries.GetList;
+using SHAnalytics.Application.Features.Battles.Commands.Create;
+using SHAnalytics.Application.Features.Battles.Queries.GetList;
 using SHAnalytics.Application.Features.InGames.Commands.Create;
 using SHAnalytics.Application.Features.InGames.Commands.Update;
 using SHAnalytics.Application.Features.InGames.Queries.GetList;
@@ -10,7 +12,7 @@ using SHAnalytics.Application.Features.Sessions.Commands.Create;
 using SHAnalytics.Application.Features.Sessions.Queries.GetList;
 using SHAnalytics.Core.Entities;
 
-namespace SHAnalytics.Application.Features.Profiles
+namespace SHAnalytics.Application.Profiles
 {
     public class MappingProfiles : Profile
     {
@@ -43,6 +45,11 @@ namespace SHAnalytics.Application.Features.Profiles
             CreateMap<BattleArea, CreateBattleAreaResponse>().ReverseMap();
             CreateMap<BattleArea, GetListBattleAreaResponse>().ReverseMap();
             CreateMap<BattleArea, GetByIdBattleAreaResponse>().ReverseMap();
+
+            CreateMap<Battle, CreateBattleCommand>().ReverseMap();
+            CreateMap<Battle, CreateBattleResponse>().ReverseMap();
+            CreateMap<Battle, GetListBattleResponse>().ReverseMap();
+            CreateMap<Battle, GetByIdBattleResponse>().ReverseMap();
         }
     }
 }

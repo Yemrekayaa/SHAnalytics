@@ -7,5 +7,6 @@ namespace SHAnalytics.Core.Entities
         public int Size { get; set; }
         public string Type { get; set; }
         public Session Session { get; set; }
+        public ICollection<Battle> Battles { get; set; }
     }
 }

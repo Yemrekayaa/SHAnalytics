@@ -5,7 +5,7 @@ using SHAnalytics.Application.Features.BattleAreas.Queries.GetList;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/BattleAreas")]
     [ApiController]
     public class BattleAreaController : BaseController
     {
