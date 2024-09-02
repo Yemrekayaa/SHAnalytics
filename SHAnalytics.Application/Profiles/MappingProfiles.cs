@@ -5,6 +5,7 @@ using SHAnalytics.Application.Features.Battles.Commands.Create;
 using SHAnalytics.Application.Features.Battles.Queries.GetList;
 using SHAnalytics.Application.Features.CardOptions.Commands.Create;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetList;
+using SHAnalytics.Application.Features.CardOptions.Queries.GetListBySession;
 using SHAnalytics.Application.Features.InGames.Commands.Create;
 using SHAnalytics.Application.Features.InGames.Commands.Update;
 using SHAnalytics.Application.Features.InGames.Queries.GetList;
@@ -57,6 +58,7 @@ namespace SHAnalytics.Application.Profiles
             CreateMap<CardOption, CreateCardOptionResponse>().ReverseMap();
             CreateMap<CardOption, GetListCardOptionResponse>().ReverseMap();
             CreateMap<CardOption, GetByIdCardOptionResponse>().ReverseMap();
+            CreateMap<CardOption, GetListBySessionCardOptionResponse>().ReverseMap();
         }
     }
 }

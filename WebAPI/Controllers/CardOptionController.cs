@@ -3,6 +3,7 @@ using SHAnalytics.Application.Features.CardOptions.Commands.Create;
 using SHAnalytics.Application.Features.CardOptions.Commands.Update;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetById;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetList;
+using SHAnalytics.Application.Features.CardOptions.Queries.GetListBySession;
 
 namespace WebAPI.Controllers
 {
@@ -34,7 +35,14 @@ namespace WebAPI.Controllers
         [HttpPut]
         public async Task<IActionResult> Update(UpdateCardOptionByIdCommand command)
         {
-            var response = await Mediator.Send(command);
+            await Mediator.Send(command);
+            return Ok();
+        }
+
+        [HttpGet("/api/Sessions/{sessionId}/CardOptions")]
+        public async Task<IActionResult> GetListBySession(int sessionId)
+        {
+            var response = Mediator.Send(new GetListBySessionCardOptionQuery(sessionId));
             return Ok(response);
         }
     }
