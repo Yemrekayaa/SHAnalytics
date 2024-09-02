@@ -3,6 +3,8 @@ using SHAnalytics.Application.Features.CardOptions.Commands.Create;
 using SHAnalytics.Application.Features.CardOptions.Commands.Update;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetById;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetList;
+using SHAnalytics.Application.Features.CardOptions.Queries.GetListByBattle;
+using SHAnalytics.Application.Features.CardOptions.Queries.GetListByBattleArea;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetListBySession;
 
 namespace WebAPI.Controllers
@@ -42,7 +44,21 @@ namespace WebAPI.Controllers
         [HttpGet("/api/Sessions/{sessionId}/CardOptions")]
         public async Task<IActionResult> GetListBySession(int sessionId)
         {
-            var response = Mediator.Send(new GetListBySessionCardOptionQuery(sessionId));
+            var response = await Mediator.Send(new GetListBySessionCardOptionQuery(sessionId));
+            return Ok(response);
+        }
+
+        [HttpGet("/api/BattleAreas/{battleAreaId}/CardOptions")]
+        public async Task<IActionResult> GetListByBattleArea(int battleAreaId)
+        {
+            var response = await Mediator.Send(new GetListByBattleAreaCardOptionQuery(battleAreaId));
+            return Ok(response);
+        }
+
+        [HttpGet("/api/Battles/{battleId}/CardOptions")]
+        public async Task<IActionResult> GetListByBattle(int battleId)
+        {
+            var response = await Mediator.Send(new GetListByBattleCardOptionQuery(battleId));
             return Ok(response);
         }
     }

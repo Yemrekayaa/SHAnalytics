@@ -21,5 +21,18 @@ namespace SHAnalytics.Infrastructure.Data
                 .Where(co => co.Battle.BattleArea.Session.Id == sessionId)
                 .ToListAsync();
         }
+        public async Task<IEnumerable<CardOption>> GetListByBattleAreaIdAsync(int battleAreaId)
+        {
+            return await _context.CardOptions.Include(co => co.Battle)
+                .ThenInclude(b => b.BattleArea)
+                .Where(co => co.Battle.BattleArea.Id == battleAreaId)
+                .ToListAsync();
+        }
+        public async Task<IEnumerable<CardOption>> GetListByBattleIdAsync(int battleId)
+        {
+            return await _context.CardOptions.Include(co => co.Battle)
+                .Where(co => co.Battle.Id == battleId)
+                .ToListAsync();
+        }
     }
 }
