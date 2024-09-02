@@ -29,6 +29,11 @@ namespace SHAnalytics.Infrastructure.Data
             return await _context.Set<T>().ToListAsync();
         }
 
+        public IQueryable<T> GetAll()
+        {
+            return _context.Set<T>().AsQueryable();
+        }
+
         public async Task<T> GetByIdAsync(int id)
         {
             return await _context.Set<T>().FindAsync(id);

@@ -6,6 +6,7 @@ using SHAnalytics.Application.Features.CardOptions.Queries.GetList;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetListByBattle;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetListByBattleArea;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetListBySession;
+using SHAnalytics.Application.Features.CardOptions.Queries.GetSelectedCount;
 
 namespace WebAPI.Controllers
 {
@@ -59,6 +60,13 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetListByBattle(int battleId)
         {
             var response = await Mediator.Send(new GetListByBattleCardOptionQuery(battleId));
+            return Ok(response);
+        }
+
+        [HttpGet("selected-count")]
+        public async Task<IActionResult> GetSelectedCount()
+        {
+            var response = await Mediator.Send(new GetSelectedCountCardOptionQuery());
             return Ok(response);
         }
     }
