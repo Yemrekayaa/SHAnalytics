@@ -63,10 +63,10 @@ namespace WebAPI.Controllers
             return Ok(response);
         }
 
-        [HttpGet("selected-count")]
-        public async Task<IActionResult> GetSelectedCount()
+        [HttpGet("stats")]
+        public async Task<IActionResult> GetSelectedCount([FromQuery] string? name)
         {
-            var response = await Mediator.Send(new GetSelectedCountCardOptionQuery());
+            var response = await Mediator.Send(new GetSelectedStatsCardOptionQuery(name));
             return Ok(response);
         }
     }
