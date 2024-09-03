@@ -8,5 +8,8 @@ namespace SHAnalytics.Application.Features.CardOptions.Queries.GetSelectedCount
         public int Perma { get; set; }
         public int PermaSelected { get; set; }
         public int TempSelected { get; set; }
+        public int PermaSelectionRate { get; set; }
+        public int TempSelectionRate { get; set; }
+        public int TotalSelectionRate { get; set; }
     }
 }

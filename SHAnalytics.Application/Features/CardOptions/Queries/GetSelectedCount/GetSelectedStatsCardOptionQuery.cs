@@ -44,7 +44,10 @@ namespace SHAnalytics.Application.Features.CardOptions.Queries.GetSelectedCount
                             Perma = g.Count(co => co.IsPerma),
                             Selected = g.Count(co => co.IsSelected),
                             PermaSelected = g.Count(co => co.IsSelected && co.IsPerma),
-                            TempSelected = g.Count(co => co.IsSelected && !co.IsPerma)
+                            TempSelected = g.Count(co => co.IsSelected && !co.IsPerma),
+                            TotalSelectionRate = (int)Math.Floor((g.Count(co => co.IsSelected) / (double)g.Count()) * 100),
+                            PermaSelectionRate = (int)Math.Floor((g.Count(co => co.IsSelected && co.IsPerma) / (double)g.Count()) * 100),
+                            TempSelectionRate = (int)Math.Floor((g.Count(co => co.IsSelected && !co.IsPerma) / (double)g.Count()) * 100)
                         }).ToList();
 
                 return response;
