@@ -8,6 +8,8 @@ namespace SHAnalytics.Application.Features.CardOptions.Queries.GetSelectedCount
     public class GetSelectedStatsCardOptionQuery : IRequest<IEnumerable<GetSelectedStatsCardOptionResponse>>
     {
         public string? Name { get; set; }
+        public string? SortBy { get; set; }
+        public string? SortOrder { get; set; }
 
         public GetSelectedStatsCardOptionQuery(string? name)
         {
@@ -28,24 +30,25 @@ namespace SHAnalytics.Application.Features.CardOptions.Queries.GetSelectedCount
             public async Task<IEnumerable<GetSelectedStatsCardOptionResponse>> Handle(GetSelectedStatsCardOptionQuery request, CancellationToken cancellationToken)
             {
                 var entities = _repository.GetAll();
-                var result = entities.GroupBy(co => co.Name)
-                    .Select(g => new GetSelectedStatsCardOptionResponse
-                    {
-                        Name = g.Key,
-                        Total = g.Count(),
-                        Selected = g.Count(co => co.IsSelected)
-                    });
+                if (!string.IsNullOrEmpty(request.Name))
+                {
+                    entities = entities.Where(co => co.Name == request.Name);
+                }
 
-                if (string.IsNullOrEmpty(request.Name))
-                {
-                    var response = result.ToList();
-                    return response;
-                }
-                else
-                {
-                    var response = result.Where(co => co.Name == request.Name).ToList();
-                    return response;
-                }
+                var response = entities
+                        .GroupBy(co => co.Name)
+                        .Select(g => new GetSelectedStatsCardOptionResponse
+                        {
+                            Name = g.Key,
+                            Total = g.Count(),
+                            Perma = g.Count(co => co.IsPerma),
+                            Selected = g.Count(co => co.IsSelected),
+                            PermaSelected = g.Count(co => co.IsSelected && co.IsPerma),
+                            TempSelected = g.Count(co => co.IsSelected && !co.IsPerma)
+                        }).ToList();
+
+                return response;
+
 
             }
         }
