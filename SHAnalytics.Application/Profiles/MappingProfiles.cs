@@ -8,6 +8,9 @@ using SHAnalytics.Application.Features.CardOptions.Queries.GetList;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetListByBattle;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetListByBattleArea;
 using SHAnalytics.Application.Features.CardOptions.Queries.GetListBySession;
+using SHAnalytics.Application.Features.Difficulties.Commands.Create;
+using SHAnalytics.Application.Features.Difficulties.Queries.GetList;
+using SHAnalytics.Application.Features.Difficulties.Queries.GetListBySession;
 using SHAnalytics.Application.Features.InGames.Commands.Create;
 using SHAnalytics.Application.Features.InGames.Commands.Update;
 using SHAnalytics.Application.Features.InGames.Queries.GetList;
@@ -63,6 +66,12 @@ namespace SHAnalytics.Application.Profiles
             CreateMap<CardOption, GetListBySessionCardOptionResponse>().ReverseMap();
             CreateMap<CardOption, GetListByBattleAreaCardOptionResponse>().ReverseMap();
             CreateMap<CardOption, GetListByBattleCardOptionResponse>().ReverseMap();
+
+            CreateMap<Difficulty, CreateDifficultyCommand>().ReverseMap();
+            CreateMap<Difficulty, CreateDifficultyResponse>().ReverseMap();
+            CreateMap<Difficulty, GetListDifficultyResponse>().ReverseMap();
+            CreateMap<Difficulty, GetByIdDifficultyResponse>().ReverseMap();
+            CreateMap<Difficulty, GetListBySessionDifficultyResponse>().ReverseMap();
         }
     }
 }

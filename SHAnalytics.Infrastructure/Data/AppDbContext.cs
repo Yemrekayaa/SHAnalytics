@@ -15,6 +15,7 @@ namespace SHAnalytics.Infrastructure.Data
         public DbSet<InGame> InGames { get; set; }
         public DbSet<BattleArea> BattleAreas { get; set; }
         public DbSet<Battle> Battles { get; set; }
+        public DbSet<Difficulty> Difficulties { get; set; }
 
         public DbSet<CardOption> CardOptions { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

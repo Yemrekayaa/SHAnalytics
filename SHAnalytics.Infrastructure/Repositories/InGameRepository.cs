@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using SHAnalytics.Core.Entities;
 using SHAnalytics.Core.Interfaces;
+using SHAnalytics.Infrastructure.Data;
 
-namespace SHAnalytics.Infrastructure.Data
+namespace SHAnalytics.Infrastructure.Repositories
 {
     public class InGameRepository : IInGameRepository
     {

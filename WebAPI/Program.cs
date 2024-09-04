@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SHAnalytics.Application;
 using SHAnalytics.Core.Interfaces;
 using SHAnalytics.Infrastructure.Data;
+using SHAnalytics.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

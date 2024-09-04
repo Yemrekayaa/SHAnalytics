@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using SHAnalytics.Core.Interfaces;
+using SHAnalytics.Infrastructure.Data;
 using System.Linq.Expressions;
 
-namespace SHAnalytics.Infrastructure.Data
+namespace SHAnalytics.Infrastructure.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
