@@ -259,3 +259,19 @@ VALUES ('20240902021634_Add_CardOptions', '8.0.8');
 
 COMMIT;
 
+BEGIN TRANSACTION;
+
+CREATE TABLE "Difficulties" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Difficulties" PRIMARY KEY AUTOINCREMENT,
+    "SessionId" INTEGER NOT NULL,
+    "Name" TEXT NOT NULL,
+    CONSTRAINT "FK_Difficulties_Sessions_SessionId" FOREIGN KEY ("SessionId") REFERENCES "Sessions" ("Id") ON DELETE CASCADE
+);
+
+CREATE INDEX "IX_Difficulties_SessionId" ON "Difficulties" ("SessionId");
+
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20240904234505_add_difficulty_Table', '8.0.8');
+
+COMMIT;
+
