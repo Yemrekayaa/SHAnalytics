@@ -22,7 +22,6 @@ namespace SHAnalytics.Infrastructure.Repositories
 
         public async Task<IEnumerable<Session>> GetListByPlayerIdAsync(int playerId)
         {
-            //return await _context.Sessions.Where(s => s.PlayerId == playerId).ToListAsync();
 
             var data = await _context.Sessions.Include(s => s.InGame)
                 .ThenInclude(ig => ig.Player)
