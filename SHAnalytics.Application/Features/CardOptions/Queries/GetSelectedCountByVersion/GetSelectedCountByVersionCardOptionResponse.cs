@@ -1,6 +1,6 @@
-namespace SHAnalytics.Application.Features.CardOptions.Queries.GetSelectedCount
+namespace SHAnalytics.Application.Features.CardOptions.Queries.GetSelectedCountByVersion
 {
-    public class GetSelectedStatsCardOptionResponse
+    public class GetSelectedCountByVersionCardOptionResponse
     {
         public string Name { get; set; }
         public float Version { get; set; }

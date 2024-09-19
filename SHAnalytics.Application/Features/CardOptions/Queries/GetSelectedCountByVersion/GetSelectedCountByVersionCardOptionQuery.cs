@@ -1,52 +1,39 @@
 using AutoMapper;
 using MediatR;
-using SHAnalytics.Core.Entities;
 using SHAnalytics.Core.Interfaces;
 
-namespace SHAnalytics.Application.Features.CardOptions.Queries.GetSelectedCount
+namespace SHAnalytics.Application.Features.CardOptions.Queries.GetSelectedCountByVersion
 {
-    public class GetSelectedStatsCardOptionQuery : IRequest<IEnumerable<GetSelectedStatsCardOptionResponse>>
+    public class GetSelectedCountByVersionCardOptionQuery : IRequest<IEnumerable<GetSelectedCountByVersionCardOptionResponse>>
     {
         public float? Version { get; set; }
         public string? SortBy { get; set; }
         public string? SortOrder { get; set; }
 
-        public GetSelectedStatsCardOptionQuery(float? version)
+        public GetSelectedCountByVersionCardOptionQuery(float? version)
         {
             Version = version;
         }
 
-        public class GetListByCountCardOptionQueryHandler : IRequestHandler<GetSelectedStatsCardOptionQuery, IEnumerable<GetSelectedStatsCardOptionResponse>>
+        public class GetListByCountCardOptionQueryHandler : IRequestHandler<GetSelectedCountByVersionCardOptionQuery, IEnumerable<GetSelectedCountByVersionCardOptionResponse>>
         {
             private readonly ICardOptionRepository _repository;
-            private readonly IGenericRepository<CardOption> _genericRepository;
             private readonly IMapper _mapper;
 
-            public GetListByCountCardOptionQueryHandler(ICardOptionRepository repository, IMapper mapper, IGenericRepository<CardOption> genericRepository)
+            public GetListByCountCardOptionQueryHandler(ICardOptionRepository repository, IMapper mapper)
             {
                 _repository = repository;
                 _mapper = mapper;
-                _genericRepository = genericRepository;
             }
 
-            public async Task<IEnumerable<GetSelectedStatsCardOptionResponse>> Handle(GetSelectedStatsCardOptionQuery request, CancellationToken cancellationToken)
+            public async Task<IEnumerable<GetSelectedCountByVersionCardOptionResponse>> Handle(GetSelectedCountByVersionCardOptionQuery request, CancellationToken cancellationToken)
             {
-                IQueryable<CardOption>? entities = null;
-
-                if (request.Version != null)
-                {
-                    entities = _repository.GetStatsByVersionAsync(request.Version);
-                }
-                else
-                {
-                    entities = _genericRepository.GetAll();
-                }
 
 
-
+                var entities = _repository.GetStatsByVersionAsync(request.Version);
                 var response = entities
                         .GroupBy(co => co.Name)
-                        .Select(g => new GetSelectedStatsCardOptionResponse
+                        .Select(g => new GetSelectedCountByVersionCardOptionResponse
                         {
                             Name = g.Key,
                             Version = request.Version ?? 0f,

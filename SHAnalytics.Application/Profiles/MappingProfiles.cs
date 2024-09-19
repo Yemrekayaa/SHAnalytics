@@ -67,6 +67,7 @@ namespace SHAnalytics.Application.Profiles
             CreateMap<CardOption, GetListByBattleAreaCardOptionResponse>().ReverseMap();
             CreateMap<CardOption, GetListByBattleCardOptionResponse>().ReverseMap();
 
+
             CreateMap<Difficulty, CreateDifficultyCommand>().ReverseMap();
             CreateMap<Difficulty, CreateDifficultyResponse>().ReverseMap();
             CreateMap<Difficulty, GetListDifficultyResponse>().ReverseMap();

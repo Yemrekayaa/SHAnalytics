@@ -35,5 +35,15 @@ namespace SHAnalytics.Infrastructure.Repositories
                 .Where(co => co.Battle.Id == battleId)
                 .ToListAsync();
         }
+
+        public IQueryable<CardOption> GetStatsByVersionAsync(float? version)
+        {
+            return _context.CardOptions
+                .Include(co => co.Battle)
+                .ThenInclude(b => b.BattleArea)
+                .ThenInclude(ba => ba.Session)
+                .ThenInclude(s => s.InGame)
+                .Where(co => co.Battle.BattleArea.Session.InGame.GameVersion == version).AsQueryable();
+        }
     }
 }

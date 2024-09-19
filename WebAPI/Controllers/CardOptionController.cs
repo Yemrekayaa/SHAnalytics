@@ -64,9 +64,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("stats")]
-        public async Task<IActionResult> GetSelectedCount([FromQuery] string? name)
+        public async Task<IActionResult> GetSelectedCount([FromQuery] float? version)
         {
-            var response = await Mediator.Send(new GetSelectedStatsCardOptionQuery(name));
+            var response = await Mediator.Send(new GetSelectedStatsCardOptionQuery(version));
             return Ok(response);
         }
     }
